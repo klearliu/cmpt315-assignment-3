@@ -1,6 +1,7 @@
 import "./App.css";
 import { EmailList } from "./components/emailList/emailList.component";
 import { useState, useEffect } from "react";
+import { SearchBar } from "./components/searchbar/searchbar.component";
 
 function App() {
   // const emailInfos = [
@@ -18,6 +19,7 @@ function App() {
   // ];
 
   const [emailInfos, setEmailInfo] = useState([]);
+
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await fetch(
@@ -31,10 +33,32 @@ function App() {
     fetchUsers();
   }, []);
 
+  const handleInput = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div className="App">
       <h1>Assignment #3</h1>
-      <EmailList emailInfos={emailInfos} />
+      <div class="container">
+        <div class="column">
+          <h2>Column 1</h2>
+        </div>
+
+        <div class="column">
+          <h2>Inbox</h2>
+          <SearchBar
+            placeholder="Subject"
+            handleInput={handleInput}
+            className="searchbar-input"
+          />
+          <EmailList emailInfos={emailInfos} />
+        </div>
+
+        <div class="column">
+          <h2>Column 3</h2>
+        </div>
+      </div>
     </div>
   );
 }

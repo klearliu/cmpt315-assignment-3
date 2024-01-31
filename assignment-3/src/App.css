@@ -1,5 +1,23 @@
 /* App.css */
 .App {
+  margin: 0;
   text-align: center;
   background-color: gainsboro;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.column {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid-color white;
+  margin: 0 10px;
+}
+
+.searchbar-input {
+  width: 1000px;
 }

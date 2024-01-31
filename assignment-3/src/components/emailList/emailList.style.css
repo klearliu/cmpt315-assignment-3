@@ -1,5 +1,5 @@
 .cardlist {
-  width: 85vw;
+  width: 50vw;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -8,7 +8,7 @@
 
 @media only screen and (max-width: 815px) {
   .cardlist {
-    width: 85vw;
+    width: 50vw;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
