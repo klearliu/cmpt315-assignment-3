@@ -5,22 +5,34 @@ import { SearchBar } from "./components/searchbar/searchbar.component";
 import MessageComponent from "./components/message.component";
 
 function App() {
-  // const emailInfos = [
-  //   {
-  //     id: "1",
-  //     from: "Sample User",
-  //     address: "chen@omnipresent.com",
-  //     time: "2021-10-07 15:35:14",
-  //     message:
-  //       "Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras",
-  //     subject: "Omnipresent Interview",
-  //     tag: "inbox",
-  //     read: "false",
-  //   },
-  // ];
-
+  // States to manage email info, search input, and filtered emails
   const [emailInfos, setEmailInfo] = useState([]);
+  const [searchInput, setSearchInput] = useState([]);
+  const [fileteredEmails, setFilteredEmails] = useState([]);
 
+  //filtering emails based on search input
+  useEffect(() => {
+    let filtered = [];
+    const lowerCaseSearchInput = searchInput.toString().toLowerCase(); // Convert searchInput to lowercase
+
+    // If search input is empty, display all emails, else; filter by subject
+    if (lowerCaseSearchInput === "") {
+      filtered = emailInfos;
+    } else {
+      filtered = emailInfos.filter((emailInfo) =>
+        emailInfo.subject.toLowerCase().includes(lowerCaseSearchInput)
+      );
+    }
+
+    setFilteredEmails(filtered);
+  }, [emailInfos, searchInput]);
+
+  // updating search input
+  const handleInput = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  // gathering email based on spec's
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await fetch(
@@ -33,10 +45,6 @@ function App() {
     };
     fetchUsers();
   }, []);
-
-  const handleInput = (e) => {
-    console.log(e.target.value);
-  };
 
   return (
     <div className="App">
@@ -70,12 +78,8 @@ function App() {
 
         <div class="column">
           <h1>Email Sidebar View</h1>
-          <SearchBar
-            placeholder="Subject"
-            handleInput={handleInput}
-            className="searchbar-input"
-          />
-          <EmailList emailInfos={emailInfos} />
+          <SearchBar placeholder="Subject" handleInput={handleInput} />
+          <EmailList emailInfos={fileteredEmails} />
         </div>
 
         <div class="column">
