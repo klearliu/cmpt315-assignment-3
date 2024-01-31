@@ -44,6 +44,28 @@ function App() {
       <div class="container">
         <div class="column">
           <h1>Column 1</h1>
+          <div>
+            <label className="radio-label">
+              <input
+                type="radio"
+                className="radio-input"
+                name="radioGroup"
+                value="option1"
+              />
+              Inbox
+            </label>
+          </div>
+          <div>
+            <label className="radio-label">
+              <input
+                type="radio"
+                className="radio-input"
+                name="radioGroup"
+                value="option2"
+              />
+              Trash
+            </label>
+          </div>
         </div>
 
         <div class="column">

@@ -1,5 +1,6 @@
 import React from "react";
 import "./searchbar.style.css";
+
 export const SearchBar = ({ placeholder, handleInput }) => (
   <input
     className="search"

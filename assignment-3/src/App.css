@@ -21,3 +21,8 @@
 .searchbar-input {
   width: 1000px;
 }
+
+.radio-label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
