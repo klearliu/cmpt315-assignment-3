@@ -2,6 +2,7 @@ import "./App.css";
 import { EmailList } from "./components/emailList/emailList.component";
 import { useState, useEffect } from "react";
 import { SearchBar } from "./components/searchbar/searchbar.component";
+import MessageComponent from "./components/message.component";
 
 function App() {
   // const emailInfos = [
@@ -39,14 +40,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Assignment #3</h1>
+      <h1>Your Email</h1>
       <div class="container">
         <div class="column">
-          <h2>Column 1</h2>
+          <h1>Column 1</h1>
         </div>
 
         <div class="column">
-          <h2>Inbox</h2>
+          <h1>Email Sidebar View</h1>
           <SearchBar
             placeholder="Subject"
             handleInput={handleInput}
@@ -56,7 +57,8 @@ function App() {
         </div>
 
         <div class="column">
-          <h2>Column 3</h2>
+          <h1>Email Body View</h1>
+          <MessageComponent messages={emailInfos} />
         </div>
       </div>
     </div>

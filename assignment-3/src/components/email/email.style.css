@@ -1,8 +1,10 @@
+/* email.style.css */
+
 .email-container {
   display: flex;
   flex-direction: column;
-  background-color: #95dada;
-  border: 1px solid grey;
+  background-color: lightgreen;
+  border: 1px solid black;
   border-radius: 5px;
   padding: 16px;
   cursor: pointer;
@@ -10,4 +12,13 @@
   backface-visibility: hidden;
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
+}
+
+.email-container.unread h2 {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.email-container.unread {
+  background-color: whitesmoke;
 }

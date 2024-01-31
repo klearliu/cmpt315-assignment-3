@@ -1,15 +1,38 @@
 // email.component.jsx
-import React from "react";
+import React, { useState } from "react";
 import "./email.style.css";
 
 export const Email = ({ emailInfo }) => {
   const { id, from, address, time, message, subject, tag, read } = emailInfo;
+
+  // tracking read status from json
+  const [isRead, setIsRead] = useState(read === "true");
+  const [displayMessage, setDisplayMessage] = useState(false);
+
+  const emailContainerClass = `email-container${isRead ? " unread" : ""}`;
+
+  // Declaring a shared variable with message.component.jsx
+
+  // This is assuming the readers do not refresh
+  const handleClick = () => {
+    if (!isRead) setIsRead(true);
+
+    // Toggle the displayMessage state to show/hide the message
+    setDisplayMessage(!displayMessage);
+  };
+
   return (
-    <div className="email-container">
+    <div className={emailContainerClass} onClick={handleClick}>
       <h2>{from}</h2>
-      <p>{subject}</p>
+      <h2>{subject}</h2>
       <p>{address}</p>
       <p>{time}</p>
+
+      {displayMessage && (
+        <div>
+          <p>{message}</p>
+        </div>
+      )}
     </div>
   );
 };
